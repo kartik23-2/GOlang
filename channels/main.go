@@ -4,5 +4,10 @@ package main
 import "fmt"
 
 func main(){
-  fmt.Println("2")
+  ch:= make(chan int)
+  go func(){
+    fmt.Println("running")
+    ch <- 2+2
+  }()
+  fmt.Println("----->", <-ch)
 }
